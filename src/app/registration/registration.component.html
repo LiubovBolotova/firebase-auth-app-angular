@@ -1,0 +1,90 @@
+<mat-card-content>
+  <div class="signup-container">
+    <h2 class="mat-h2">Registration</h2>
+    <form [formGroup]="formGroup" class="signup-form">
+      <mat-form-field>
+        <input
+          id="email"
+          type="text"
+          class="email-input"
+          formControlName="email"
+          matInput
+          placeholder="Email"
+          required
+        />
+
+        <mat-error *ngIf="required('email')" class="error">
+          <div>
+            Email required!
+          </div>
+        </mat-error>
+
+        <mat-error *ngIf="isEmailInvalid()" class="error">
+          <div>
+            Must be a valid email address
+          </div>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          class="password-input"
+          formControlName="password"
+          matInput
+          placeholder="Password"
+          required
+          minlength="8"
+        />
+
+        <mat-error *ngIf="required('password')" class="error">
+          <div>
+            Password required!
+          </div>
+        </mat-error>
+
+        <mat-error *ngIf="submitted && wrongMinLength('password')" class="error">
+          <div>
+            Must be at least 8 characters long
+          </div>
+        </mat-error>
+
+        <mat-error *ngIf="invalid('password')" class="error">
+          <div>
+            Invalid password: should have capital letter, digit and simbol
+          </div>
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          class="password-input"
+          formControlName="repPassword"
+          matInput
+          placeholder="Confirm password"
+          required
+          minlength="8"
+        />
+
+        <mat-error *ngIf="required('repPassword')" class="error">
+          <div>
+            Repeat password!
+          </div>
+        </mat-error>
+
+        <mat-error *ngIf="submitted && comparePasswords('repPassword')" class="error">
+          <div>
+            Passwords should be equal
+          </div>
+        </mat-error>
+      </mat-form-field>
+
+      <div mat-dialog-actions class="actions">
+        <button type="submit" class="submit-btn" mat-raised-button (click)="submitSignUpForm()">
+          SignUp
+        </button>
+
+        <a mat-raised-button [routerLink]="['/login']">LogIn</a>
+      </div>
+    </form>
+  </div>
+</mat-card-content>
