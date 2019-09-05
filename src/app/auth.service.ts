@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { first, tap, map, take } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
 
 import * as firebase from 'firebase/app';
 
@@ -12,9 +13,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  // public fireUser: any;
-  // public user: Observable<firebase.User>;
-  // public userDetails: firebase.User = null;
+  private _isLoginErrorShown$$ = new Subject<boolean>();
+
+  private _isSignInErrorShown$$ = new Subject<boolean>();
 
   constructor(private _firebaseAuth: AngularFireAuth, private _router: Router) {}
 
@@ -25,6 +26,7 @@ export class AuthService {
         console.log('Success!', value);
       })
       .catch((err) => {
+        this._isSignInErrorShown$$.next(true);
         console.log('signup Something went wrong:', err.message);
       });
   }
@@ -37,16 +39,12 @@ export class AuthService {
         this._router.navigate(['/welcome']);
       })
       .catch((err) => {
+        this._isLoginErrorShown$$.next(true);
         console.log('login Something went wrong:', err.message);
       });
   }
 
   public isLoggedIn() {
-    // return this._firebaseAuth.authState.pipe(first()).pipe(tap((user) => user));
-    // return (
-    //   this._firebaseAuth.auth.currentUser !== null &&
-    //   this._firebaseAuth.auth.currentUser !== undefined
-    // );
     return this._firebaseAuth.authState.pipe(first()).pipe(
       tap((user) => {
         if (user) {
@@ -62,5 +60,12 @@ export class AuthService {
     this._firebaseAuth.auth.signOut().then(() => {
       this._router.navigate(['/login']);
     });
+  }
+
+  public isLoginErrorShown$(): Observable<boolean> {
+    return this._isLoginErrorShown$$.asObservable();
+  }
+  public isSingInErrorShown$(): Observable<boolean> {
+    return this._isSignInErrorShown$$.asObservable();
   }
 }

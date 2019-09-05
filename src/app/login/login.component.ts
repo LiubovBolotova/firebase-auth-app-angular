@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { CustomValidators } from './../custom-validators';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { FormValidationService } from './../form-validation.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -64,5 +65,9 @@ export class LoginComponent implements OnInit {
         this.formGroup.controls['password'].value,
       );
     }
+  }
+
+  public isLoginErrorShown$(): Observable<boolean> {
+    return this._authService.isLoginErrorShown$();
   }
 }

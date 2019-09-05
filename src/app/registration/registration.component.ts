@@ -1,9 +1,10 @@
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
 import { CustomValidators } from './../custom-validators';
-import { Router } from '@angular/router';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { FormValidationService } from './../form-validation.service';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registration',
@@ -72,5 +73,9 @@ export class RegistrationComponent implements OnInit {
 
       this._router.navigate(['/login']);
     }
+  }
+
+  public isSignInErrorShown$(): Observable<boolean> {
+    return this._authService.isLoginErrorShown$();
   }
 }

@@ -25,7 +25,7 @@
           </div>
         </mat-error>
 
-        <mat-error [className]="!isLoggedIn && submitted ? 'error' : 'no-error'">
+        <mat-error *ngIf="isLoginErrorShown$ | async" class="error">
           <div>
             Wrong email or password!
           </div>
@@ -48,7 +48,7 @@
           </div>
         </mat-error>
 
-        <mat-error [className]="!isLoggedIn && submitted ? 'error' : 'no-error'">
+        <mat-error *ngIf="isLoginErrorShown$ | async" class="error">
           <div>
             Wrong email or password!
           </div>

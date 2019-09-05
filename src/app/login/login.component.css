@@ -65,9 +65,4 @@
   border-radius: 0 0 3px 3px;
   right: 10px;
   pointer-events: none;
-  visibility: visible;
-}
-
-.no-error {
-  visibility: hidden;
 }
