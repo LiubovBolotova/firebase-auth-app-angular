@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 export class LoginComponent implements OnInit {
   public formGroup: FormGroup;
   public submitted: boolean = false;
+  public isLoginErrorShown$: Observable<boolean> = this._authService.isLoginErrorShown$();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -21,7 +22,6 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    debugger;
     this.formGroup = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: [
@@ -65,9 +65,5 @@ export class LoginComponent implements OnInit {
         this.formGroup.controls['password'].value,
       );
     }
-  }
-
-  public isLoginErrorShown$(): Observable<boolean> {
-    return this._authService.isLoginErrorShown$();
   }
 }
