@@ -1,12 +1,12 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: 'AIzaSyCYnwFJU9DM776bY4YEPszkrx4LTzWwFiY',
-    authDomain: 'test-task-store.firebaseapp.com',
-    databaseURL: 'https://test-task-store.firebaseio.com',
-    projectId: 'test-task-store',
-    storageBucket: 'test-task-store.appspot.com',
-    messagingSenderId: '658964918982',
-    appId: '1:658964918982:web:2788b87a4505b38e',
+    apiKey: 'AIzaSyDLCLwDL6o6jELHGt9gGzk4GAw0VAX8_iA',
+    authDomain: 'fir-auth-app-angular.firebaseapp.com',
+    databaseURL: 'https://fir-auth-app-angular.firebaseio.com',
+    projectId: 'fir-auth-app-angular',
+    storageBucket: 'fir-auth-app-angular.appspot.com',
+    messagingSenderId: '1005866863100',
+    appId: '1:1005866863100:web:c7e8f3f9185ab109908a79',
   },
 };

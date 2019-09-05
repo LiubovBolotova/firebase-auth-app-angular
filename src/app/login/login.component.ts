@@ -4,8 +4,6 @@ import { CustomValidators } from './../custom-validators';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { FormValidationService } from './../form-validation.service';
 
-import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -13,17 +11,16 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   public formGroup: FormGroup;
-  public submitted = false;
-  public passwordMassage = false;
+  public submitted: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
     private _formValidationService: FormValidationService,
     private _authService: AuthService,
-    private _router: Router,
   ) {}
 
   ngOnInit() {
+    debugger;
     this.formGroup = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: [
@@ -47,6 +44,10 @@ export class LoginComponent implements OnInit {
 
   public isEmailInvalid(): boolean {
     return this.submitted && this.formGroup.get('email').hasError('email');
+  }
+
+  public isLoggedIn() {
+    return this._authService.isLoggedIn;
   }
 
   public submitLoginForm(): void {

@@ -1,6 +1,6 @@
 <mat-card-content>
   <div class="login-container">
-    <h2 class="mat-h2">Please login</h2>
+    <h2 class="mat-h2">User Login</h2>
     <form [formGroup]="formGroup" class="login-form">
       <mat-form-field>
         <input
@@ -24,6 +24,12 @@
             Must be a valid email address
           </div>
         </mat-error>
+
+        <mat-error [className]="!isLoggedIn && submitted ? 'error' : 'no-error'">
+          <div>
+            Wrong email or password!
+          </div>
+        </mat-error>
       </mat-form-field>
 
       <mat-form-field>
@@ -42,25 +48,21 @@
           </div>
         </mat-error>
 
-        <!-- <mat-error *ngIf="submitted && wrongMinLength('password')" class="error">
+        <mat-error [className]="!isLoggedIn && submitted ? 'error' : 'no-error'">
           <div>
-            Must be at least 8 characters long
+            Wrong email or password!
           </div>
-        </mat-error> -->
-
-        <!-- <mat-error *ngIf="invalid('password')" class="error">
-          <div>
-            Invalid password: should have capital letter, digit and simbol
-          </div>
-        </mat-error> -->
+        </mat-error>
       </mat-form-field>
 
       <div mat-dialog-actions class="actions">
-        <button type="submit" class="submit-btn" mat-raised-button (click)="submitLoginForm()">
+        <button type="submit" class="login-btn" mat-raised-button (click)="submitLoginForm()">
           Login
         </button>
 
-        <a mat-raised-button [routerLink]="['/register']">SignUp</a>
+        <span>
+          Not a member? <a class="register-link" [routerLink]="['/register']">Register now</a>
+        </span>
       </div>
     </form>
   </div>

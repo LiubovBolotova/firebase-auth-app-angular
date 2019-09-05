@@ -1,6 +1,6 @@
 <mat-card-content>
   <div class="signup-container">
-    <h2 class="mat-h2">Registration</h2>
+    <h2 class="mat-h2">User Registration</h2>
     <form [formGroup]="formGroup" class="signup-form">
       <mat-form-field>
         <input
@@ -79,11 +79,16 @@
       </mat-form-field>
 
       <div mat-dialog-actions class="actions">
-        <button type="submit" class="submit-btn" mat-raised-button (click)="submitSignUpForm()">
+        <button
+          type="submit"
+          class="register-btn"
+          mat-raised-button
+          (click)="submitRegistrationForm()"
+        >
           SignUp
         </button>
 
-        <a mat-raised-button [routerLink]="['/login']">LogIn</a>
+        <span> Already a member? <a [routerLink]="['/login']">Log In</a> </span>
       </div>
     </form>
   </div>

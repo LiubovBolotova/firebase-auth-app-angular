@@ -1,0 +1,30 @@
+.inventory-body {
+  position: fixed;
+  min-width: 100%;
+  background-image: url('../../assets/whalecome.gif');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  background-size: initial;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+}
+
+.login-btn {
+  margin-bottom: 5%;
+  color: black;
+  border: none;
+  outline: none;
+}
+
+.login-btn:not([disabled]):hover {
+  background-color: rgba(158, 158, 158, 0.2);
+}
+
+.login-btn[disabled] {
+  color: rgba(0, 0, 0, 0.26);
+  background-color: transparent;
+}

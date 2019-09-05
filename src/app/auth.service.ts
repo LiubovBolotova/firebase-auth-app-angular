@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { AngularFireAuth } from 'angularfire2/auth';
-import { first, tap } from 'rxjs/operators';
+import { first, tap, map, take } from 'rxjs/operators';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import * as firebase from 'firebase/app';
@@ -12,10 +12,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
-  public fireUser: any;
-  public isSignedUp: boolean = false;
-  public user: Observable<firebase.User>;
-  public userDetails: firebase.User = null;
+  // public fireUser: any;
+  // public user: Observable<firebase.User>;
+  // public userDetails: firebase.User = null;
 
   constructor(private _firebaseAuth: AngularFireAuth, private _router: Router) {}
 
@@ -43,7 +42,20 @@ export class AuthService {
   }
 
   public isLoggedIn() {
-    return this._firebaseAuth.authState.pipe(first());
+    // return this._firebaseAuth.authState.pipe(first()).pipe(tap((user) => user));
+    // return (
+    //   this._firebaseAuth.auth.currentUser !== null &&
+    //   this._firebaseAuth.auth.currentUser !== undefined
+    // );
+    return this._firebaseAuth.authState.pipe(first()).pipe(
+      tap((user) => {
+        if (user) {
+          return true;
+        } else {
+          this._router.navigate(['/login']);
+        }
+      }),
+    );
   }
 
   public logout() {

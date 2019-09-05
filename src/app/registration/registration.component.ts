@@ -56,7 +56,7 @@ export class RegistrationComponent implements OnInit {
     return this.submitted && this.formGroup.get('email').hasError('email');
   }
 
-  public submitSignUpForm(): void {
+  public submitRegistrationForm(): void {
     this.submitted = true;
 
     if (this.formGroup.invalid) {

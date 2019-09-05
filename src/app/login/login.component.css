@@ -26,7 +26,27 @@
 
 .actions {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+}
+
+.login-btn {
+  margin-bottom: 5%;
+  color: black;
+  border: none;
+  outline: none;
+}
+
+.login-btn:not([disabled]):hover {
+  background-color: rgba(158, 158, 158, 0.2);
+}
+
+.login-btn[disabled] {
+  color: rgba(0, 0, 0, 0.26);
+  background-color: transparent;
+}
+
+.register-link {
+  text-transform: uppercase;
 }
 
 .error {
@@ -39,4 +59,9 @@
   border-radius: 0 0 3px 3px;
   right: 10px;
   pointer-events: none;
+  visibility: visible;
+}
+
+.no-error {
+  visibility: hidden;
 }
