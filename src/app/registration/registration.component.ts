@@ -12,8 +12,8 @@ import { FormValidationService } from './../form-validation.service';
 })
 export class RegistrationComponent implements OnInit {
   public formGroup: FormGroup;
-  public submitted = false;
-  public passwordMassage = false;
+  public submitted: boolean = false;
+  public passwordMassage: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,

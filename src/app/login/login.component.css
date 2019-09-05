@@ -12,9 +12,13 @@
   flex-direction: column;
   min-width: 30%;
   max-height: 50%;
+  margin-bottom: 10%;
 }
 
-.login-container>*,
+.login-container>* {
+  margin-bottom: 5%;
+}
+
 .login-form>* {
   margin-bottom: 10%;
 }
@@ -34,6 +38,8 @@
   color: black;
   border: none;
   outline: none;
+  max-width: 20%;
+  margin-bottom: 8%;
 }
 
 .login-btn:not([disabled]):hover {

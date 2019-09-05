@@ -18,6 +18,7 @@
   color: black;
   border: none;
   outline: none;
+  max-width: 20%;
 }
 
 .login-btn:not([disabled]):hover {

@@ -9,10 +9,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from '../material-module';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
-import { RouterModule } from '@angular/router';
+import { RouterModule, PreloadAllModules } from '@angular/router';
+import { AngularFireAuthGuard } from '@angular/fire/auth-guard';
 import { routes } from './routes';
 
-import { AuthGuard } from '../app/auth.guard';
 import { environment } from '../environments/environment';
 
 import { AuthService } from './auth.service';
@@ -30,14 +30,15 @@ import { WelcomeToAppComponent } from './welcome-to-app/welcome-to-app.component
     ReactiveFormsModule,
     HttpClientModule,
     MaterialModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
   ],
-  providers: [FormValidationService, AuthGuard, AuthService],
+  providers: [FormValidationService, AuthService, AngularFireAuthGuard],
   bootstrap: [AppComponent, LoginComponent, RegistrationComponent, WelcomeToAppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   entryComponents: [LoginComponent],
+  exports: [RouterModule],
 })
 export class AppModule {}
