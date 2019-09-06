@@ -13,7 +13,7 @@
   justify-content: center;
 }
 
-.login-btn {
+.logout-btn {
   margin-bottom: 5%;
   color: black;
   border: none;
@@ -21,11 +21,11 @@
   max-width: 20%;
 }
 
-.login-btn:not([disabled]):hover {
+.logout-btn:not([disabled]):hover {
   background-color: rgba(158, 158, 158, 0.2);
 }
 
-.login-btn[disabled] {
+.logout-btn[disabled] {
   color: rgba(0, 0, 0, 0.26);
   background-color: transparent;
 }

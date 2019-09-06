@@ -10,13 +10,9 @@
 .login-form {
   display: flex;
   flex-direction: column;
-  min-width: 30%;
-  max-height: 50%;
+  width: 30%;
+  max-height: 70%;
   margin-bottom: 10%;
-}
-
-.login-container>* {
-  margin-bottom: 5%;
 }
 
 .login-form>* {
@@ -24,8 +20,8 @@
 }
 
 .mat-h2 {
-  margin: 0 auto;
   width: 30%;
+  margin-bottom: 5%;
 }
 
 .actions {
@@ -38,6 +34,7 @@
   color: black;
   border: none;
   outline: none;
+  min-width: 80px;
   max-width: 20%;
   margin-bottom: 8%;
 }
@@ -65,4 +62,9 @@
   border-radius: 0 0 3px 3px;
   right: 10px;
   pointer-events: none;
+}
+
+#login-input-error {
+  padding: 0;
+  margin: 0 0 5%;
 }

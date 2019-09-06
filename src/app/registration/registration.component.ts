@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { CustomValidators } from './../custom-validators';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { FormValidationService } from './../form-validation.service';
-import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({
@@ -14,7 +13,8 @@ import { Router } from '@angular/router';
 export class RegistrationComponent implements OnInit {
   public formGroup: FormGroup;
   public submitted: boolean = false;
-  public passwordMassage: boolean = false;
+  public isSignUpErrorShown: boolean = false;
+  public signUpErrorMassage: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -59,6 +59,8 @@ export class RegistrationComponent implements OnInit {
 
   public submitRegistrationForm(): void {
     this.submitted = true;
+    this.isSignUpErrorShown = false;
+    this.signUpErrorMassage = '';
 
     if (this.formGroup.invalid) {
       console.log('invalid form group');
@@ -66,16 +68,17 @@ export class RegistrationComponent implements OnInit {
     }
 
     if (this.formGroup.valid) {
-      this._authService.signup(
-        this.formGroup.controls['email'].value,
-        this.formGroup.controls['password'].value,
-      );
-
-      this._router.navigate(['/login']);
+      this._authService
+        .signup(this.formGroup.controls['email'].value, this.formGroup.controls['password'].value)
+        .then((value) => {
+          this._router.navigate(['/login']);
+          console.log(value);
+        })
+        .catch((err) => {
+          console.log(err);
+          this.signUpErrorMassage = err;
+          this.isSignUpErrorShown = true;
+        });
     }
-  }
-
-  public isSignInErrorShown$(): Observable<boolean> {
-    return this._authService.isLoginErrorShown$();
   }
 }

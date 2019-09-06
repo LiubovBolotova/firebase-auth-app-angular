@@ -1,7 +1,12 @@
 <mat-card-content>
   <div class="signup-container">
     <h2 class="mat-h2">User Registration</h2>
+
     <form [formGroup]="formGroup" class="signup-form">
+      <div *ngIf="isSignUpErrorShown" id="signup-input-error" class="error">
+        <span>{{ signUpErrorMassage }}</span>
+      </div>
+
       <mat-form-field>
         <input
           id="email"

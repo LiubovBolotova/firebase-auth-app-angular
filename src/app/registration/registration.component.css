@@ -10,12 +10,8 @@
 .signup-form {
   display: flex;
   flex-direction: column;
-  min-width: 30%;
-  max-height: 50%;
-}
-
-.signup-container>* {
-  margin-bottom: 5%;
+  width: 30%;
+  max-height: 70%;
 }
 
 .signup-form>* {
@@ -23,8 +19,8 @@
 }
 
 .mat-h2 {
-  margin: 0 auto;
   width: 30%;
+  margin-bottom: 5%;
 }
 
 .actions {
@@ -37,6 +33,7 @@
   color: rgb(49, 46, 46);
   background-color: rgba(255, 222, 121, 0.96);
   max-width: 30%;
+  min-width: 80px;
   margin-bottom: 8%;
 }
 
@@ -60,4 +57,9 @@
   border-radius: 0 0 3px 3px;
   right: 10px;
   pointer-events: none;
+}
+
+#signup-input-error {
+  padding: 0;
+  margin: 0 0 5%;
 }
