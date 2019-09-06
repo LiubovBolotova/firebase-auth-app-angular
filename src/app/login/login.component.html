@@ -4,7 +4,7 @@
 
     <form [formGroup]="formGroup" class="login-form">
       <div *ngIf="isLoginErrorShown" id="login-input-error" class="error">
-        <span > {{ errorMassage }}</span>
+        <span> {{ errorMessage }}</span>
       </div>
 
       <mat-form-field>
@@ -29,12 +29,6 @@
             Must be a valid email address
           </div>
         </mat-error>
-
-        <!-- <mat-error *ngIf="isLoginErrorShown" class="error">
-          <div>
-            Wrong email or password!
-          </div>
-        </mat-error> -->
       </mat-form-field>
 
       <mat-form-field>

@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   public formGroup: FormGroup;
   public submitted: boolean = false;
   public isLoginErrorShown: boolean = false;
-  public errorMassage: string = '';
+  public errorMessage: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -48,11 +48,11 @@ export class LoginComponent implements OnInit {
   public submitLoginForm() {
     this.submitted = true;
     this.isLoginErrorShown = false;
-    this.errorMassage = '';
+    this.errorMessage = '';
 
     if (this.formGroup.invalid) {
       console.log('invalid form group');
-      this.errorMassage = 'wrong email or password';
+      this.errorMessage = 'wrong email or password';
       return;
     }
 
@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
         })
         .catch((err) => {
           console.log(err);
-          this.errorMassage = err;
+          this.errorMessage = err;
           this.isLoginErrorShown = true;
         });
     }

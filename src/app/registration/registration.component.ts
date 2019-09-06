@@ -14,7 +14,7 @@ export class RegistrationComponent implements OnInit {
   public formGroup: FormGroup;
   public submitted: boolean = false;
   public isSignUpErrorShown: boolean = false;
-  public signUpErrorMassage: string = '';
+  public signUpErrorMessage: string = '';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -60,7 +60,7 @@ export class RegistrationComponent implements OnInit {
   public submitRegistrationForm(): void {
     this.submitted = true;
     this.isSignUpErrorShown = false;
-    this.signUpErrorMassage = '';
+    this.signUpErrorMessage = '';
 
     if (this.formGroup.invalid) {
       console.log('invalid form group');
@@ -76,7 +76,7 @@ export class RegistrationComponent implements OnInit {
         })
         .catch((err) => {
           console.log(err);
-          this.signUpErrorMassage = err;
+          this.signUpErrorMessage = err;
           this.isSignUpErrorShown = true;
         });
     }

@@ -16,5 +16,9 @@ export const routes: Routes = [
     component: WelcomeToAppComponent,
     ...canActivate(redirectUnauthorizedToLogin),
   },
-  { path: '**', component: LoginComponent },
+  {
+    path: '**',
+    redirectTo: '/',
+    pathMatch: 'full',
+  },
 ];
