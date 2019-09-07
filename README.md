@@ -1,5 +1,7 @@
 # FirebaseAuthAppAngular
 
+This is a test task. Please follow the link to show how it works https://fir-auth-app-angular.firebaseapp.com/login on Firebase hosting.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.2.
 
 ## Development server

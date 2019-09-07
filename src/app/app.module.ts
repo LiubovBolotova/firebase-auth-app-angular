@@ -36,9 +36,8 @@ import { WelcomeToAppComponent } from './welcome-to-app/welcome-to-app.component
     AngularFireAuthModule,
   ],
   providers: [FormValidationService, AuthService, AngularFireAuthGuard],
-  bootstrap: [AppComponent, LoginComponent, RegistrationComponent, WelcomeToAppComponent],
+  bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  entryComponents: [WelcomeToAppComponent],
   exports: [RouterModule],
 })
 export class AppModule {}
